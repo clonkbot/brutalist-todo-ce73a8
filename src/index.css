@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --warning: #FFB800;
+  --stripe-size: 20px;
+}
+
+@layer base {
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: var(--warning);
+    color: black;
+  }
+
+  body {
+    cursor: crosshair;
+  }
+
+  button, a, input {
+    cursor: crosshair;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Bebas Neue', sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .text-warning {
+    color: var(--warning);
+  }
+
+  .bg-warning {
+    background-color: var(--warning);
+  }
+
+  .border-warning {
+    border-color: var(--warning);
+  }
+
+  .focus\:border-warning:focus {
+    border-color: var(--warning);
+  }
+
+  .hover\:text-warning:hover {
+    color: var(--warning);
+  }
+
+  .hover\:bg-warning:hover {
+    background-color: var(--warning);
+  }
+
+  .bg-repeating-stripe {
+    background: repeating-linear-gradient(
+      -45deg,
+      black,
+      black 10px,
+      var(--warning) 10px,
+      var(--warning) 20px
+    );
+  }
+
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, black 1px, transparent 1px),
+      linear-gradient(to bottom, black 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e5e5e5;
+  border-left: 4px solid black;
+}
+
+::-webkit-scrollbar-thumb {
+  background: black;
+  border: 2px solid black;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--warning);
+}
+
+/* Input focus ring removal - brutalist doesn't need soft glows */
+input:focus {
+  box-shadow: none;
+}
+
+/* Animation for task appearance */
+@keyframes task-appear {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+li {
+  animation: task-appear 0.2s ease-out;
+}
+
+/* Hover state for todo items */
+li:hover {
+  background-color: #fafafa;
+}
+
+li:hover .bg-neutral-200 {
+  background-color: #e5e5e5;
+}
